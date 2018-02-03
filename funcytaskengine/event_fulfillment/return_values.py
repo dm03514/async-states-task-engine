@@ -21,6 +21,12 @@ class Valuesable(object):
     def values(self):
         raise NotImplementedError()
 
+    def first(self, values_prop=None):
+        if values_prop is None:
+            return self.values()[0]
+
+        return getattr(self.values()[0], values_prop)
+
 
 class EventResult(Valuesable):
     __metaclass__ = ABCMeta

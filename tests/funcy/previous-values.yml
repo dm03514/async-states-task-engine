@@ -5,9 +5,6 @@ version: "1"
 
 events:
   - name: google_request
-    event_fulfillment_strategy:
-       type: poll.PollerFulfillment
-       frequency_ms: 200
     initiator:
       method: get
       type: http.HTTPInitiator
@@ -16,3 +13,8 @@ events:
       - type: assertions.Equal
         value_property: status_code
         to_equal: 200
+
+  - name: make_another_google_request_from_return
+    initiator: get
+    type: http.HTTPInitiator
+    url: "
