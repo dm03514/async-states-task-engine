@@ -5,5 +5,5 @@ class BaseInitiator(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def execute(self):
+    def execute(self, event_results, **kwargs):
         pass

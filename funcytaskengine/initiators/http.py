@@ -10,7 +10,7 @@ class HTTPInitiator(BaseInitiator):
         self.method = method
         self.url = url
 
-    def execute(self):
+    def execute(self, event_results=None):
         return ValuesContainer(
             getattr(requests, self.method)(self.url)
         )

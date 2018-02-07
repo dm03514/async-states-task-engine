@@ -83,6 +83,7 @@ class Equal(BaseTransitionCondition):
             to_assert = v
             if self.value_property:
                 to_assert = getattr(v, self.value_property)
-            assert self.to_equal == to_assert, '{} != {}'.format(self.to_equal, to_assert)
+            assert self.to_equal == to_assert, '{} != {}, {}'.format(
+                self.to_equal, to_assert, v)
         return vs
 
