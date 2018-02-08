@@ -11,7 +11,10 @@ class SelectInitiator(BaseInitiator):
         self.conn = psycopg2.connect(connection_string)
         self.query = query
 
-    def execute(self):
+    def apply_overrides(self, event_results):
+        pass
+
+    def execute(self, *args, **kwargs):
         cur = self.conn.cursor()
 
         results = []
@@ -27,12 +30,16 @@ class SelectInitiator(BaseInitiator):
 
 
 class QueryInitiator(BaseInitiator):
+
     def __init__(self, type, query, connection_string):
         self.query = query
         self.conn = psycopg2.connect(connection_string)
         self.query = query
 
-    def execute(self):
+    def apply_overrides(self, event_results):
+        pass
+
+    def execute(self, *args, **kwargs):
         cur = self.conn.cursor()
 
         try:

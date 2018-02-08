@@ -7,5 +7,8 @@ class NoopInitiator(BaseInitiator):
     def __init__(self, *args, **kwargs):
         pass
 
-    def execute(self):
+    def apply_overrides(self, event_results):
+        pass
+
+    def execute(self, *args, **kwargs):
         return EmptyValues()

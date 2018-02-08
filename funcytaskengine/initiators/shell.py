@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class SubprocessInitiator(BaseInitiator):
 
-    def __init__(self, type, command, overrides=None):
+    def __init__(self, type, command, overrides=()):
         self.command = command
         self.overrides = overrides
 
@@ -31,7 +31,7 @@ class SubprocessInitiator(BaseInitiator):
                 if part == to_replace:
                     self.command[i] = v
 
-    def execute(self, event_results):
+    def execute(self, event_results, *args, **kwargs):
         logger.debug({
             'message': 'executing_command_raw',
             'command': self.command,

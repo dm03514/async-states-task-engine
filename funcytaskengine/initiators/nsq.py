@@ -17,10 +17,13 @@ class NSQPublisherInitiator(BaseInitiator):
         self.nsqd_address = nsqd_address
         self.topic = topic
 
+    def apply_overrides(self, event_results):
+        pass
+
     def validate_message(self, message):
         return json.loads(message.replace('\n', ''))
 
-    def execute(self):
+    def execute(self, *args, **kwargs):
         logger.debug('%s', {
             'message': 'publishing_message_nsq',
             'body': self.message,

@@ -13,7 +13,7 @@ class HTTPInitiator(BaseInitiator):
     def apply_overrides(self, event_results):
         pass
 
-    def execute(self, event_results=None):
+    def execute(self, *args, **kwargs):
         return ValuesContainer(
             getattr(requests, self.method)(self.url)
         )
