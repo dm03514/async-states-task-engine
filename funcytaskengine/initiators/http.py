@@ -10,6 +10,9 @@ class HTTPInitiator(BaseInitiator):
         self.method = method
         self.url = url
 
+    def apply_overrides(self, event_results):
+        pass
+
     def execute(self, event_results=None):
         return ValuesContainer(
             getattr(requests, self.method)(self.url)

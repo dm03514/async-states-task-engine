@@ -7,3 +7,7 @@ class BaseInitiator(object):
     @abstractmethod
     def execute(self, event_results, **kwargs):
         pass
+
+    @abstractmethod
+    def apply_overrides(self, event_results):
+        pass
