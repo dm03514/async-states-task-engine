@@ -10,10 +10,10 @@ logger = logging.getLogger(__name__)
 class SingleFireFulfillment(BaseFulfillment):
 
     @ApplyConditions()
-    def run(self, initiator, conditions, **kwargs):
+    def run(self, initiator, conditions, event_results, **kwargs):
         logger.debug({
             'initiator': initiator,
             'conditions': conditions,
         })
-        return initiator.execute()
+        return initiator.execute(event_results)
 

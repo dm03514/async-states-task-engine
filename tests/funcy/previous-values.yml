@@ -1,0 +1,27 @@
+---
+max_timeout: 10000
+name: single_http_request_test
+version: "1"
+
+events:
+  - name: google_request
+    initiator:
+      method: get
+      type: http.HTTPInitiator
+      url: "http://google.com"
+    transition_conditions:
+      - type: assertions.Equal
+        value_property: status_code
+        to_equal: 200
+
+  - name: make_another_google_request_from_return
+    initiator:
+      type: shell.SubprocessInitiator
+      overrides:
+        - "google_request:url:$FROM_RESULT_URL"
+      command:
+        - echo
+        - "$FROM_RESULT_URL"
+    transition_conditions:
+        - type: assertions.Equal
+          to_equal: 0

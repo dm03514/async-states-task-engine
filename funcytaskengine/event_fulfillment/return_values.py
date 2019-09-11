@@ -14,12 +14,27 @@ class EventResults(object):
         return self.by_event_name[event_name]
 
 
+class Value(object):
+    """
+    Simple wrapper providing functional accessors and being able to
+    smooth over access between different data types?
+    """
+    def __init__(self, v):
+        self.v = v
+
+    def prop(self, name):
+        return getattr(self.v, name)
+
+
 class Valuesable(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def values(self):
         raise NotImplementedError()
+
+    def first(self):
+        return Value(self.values()[0])
 
 
 class EventResult(Valuesable):
